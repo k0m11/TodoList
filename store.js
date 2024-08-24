@@ -36,6 +36,8 @@ function addItem(e) {
         grocery.appendChild(element)
         displayAlert("Item Added to the list", "correct")
         input.value = ""
+        clearBtn.style.display = "flex-box"
+        grocery.style.display = "block"
     }
     else if(value !== "" && editFlag) {
         
