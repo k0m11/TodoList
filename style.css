@@ -10,11 +10,10 @@ body {
 }
 
 .container {
-    position: relative;
     margin: 0 auto;
     text-align: center;
     background-color: white;
-    height: 350px;
+    height: 350px auto;
     width: 500px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0px rgb(168, 168, 168);
@@ -66,24 +65,32 @@ body {
     cursor: pointer;
 }
 
-.container-list {
-    display: block;
-    float: left;
-    height: auto;
-}
-
 #clear-btn {
+    bottom: 35px;
+    position: relative;
+    color: rgba(167, 13, 13, 0.568);
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: none;
 }
 
+#clear-btn:hover {
+    background-color: rgb(248, 248, 248);
+}
 
 .list {
+    display: none;
+    height: auto;
     margin-top: 10px;
     width: 500px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 5px 5px 10px 0px rgb(168, 168, 168);
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .list-item {
@@ -94,15 +101,12 @@ body {
     padding: 5px;
     font-size: 20px;
     border-radius: 5px;
-    
 }
 
 .list-item:hover {
     background-color: rgb(248, 248, 248);
 }
 
-.btn-container {
-}
 .edit-btn {
     background-image: url(https://cdn-icons-png.flaticon.com/128/1159/1159633.png);
     background-size: cover;
@@ -111,6 +115,7 @@ body {
     border: none;
     cursor: pointer;
 }
+
 .delete-btn {
     background-image: url(https://cdn-icons-png.flaticon.com/128/6861/6861362.png);
     background-size: cover;
