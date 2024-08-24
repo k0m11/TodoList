@@ -11,10 +11,12 @@ let editFlag = false;
 let editID = "";
 // ************ EVENT LISTENERS ************
 submitBtn.addEventListener("click", addItem)
+clearBtn.addEventListener("click", clearAll)
 
 function addItem(e) {
     e.preventDefault();
-    const value = input.value
+    let value = input.value
+    value = valueDecor(value)
     const id = new Date().getTime().toString() // some kind of random numbers
 
     if(value !== "" && editFlag == false) {
@@ -36,7 +38,7 @@ function addItem(e) {
         grocery.appendChild(element)
         displayAlert("Item Added to the list", "correct")
         input.value = ""
-        clearBtn.style.display = "flex-box"
+        clearBtn.style.display = "inline"
         grocery.style.display = "block"
     }
     else if(value !== "" && editFlag) {
@@ -55,4 +57,15 @@ function displayAlert(text, action) {
         alert.innerHTML = ""
         alert.classList.remove(`alert-${action}`)
     },1000)
+}
+
+function clearAll() {
+    if(confirm("Clear All Items???")) {
+        grocery.innerHTML = ""
+        clearBtn.style.display = "none"
+    }
+}
+
+function valueDecor(x) {
+    return x.split(" ").map((y)=> y[0].toUpperCase() + y.slice(1)).join(" ")
 }
