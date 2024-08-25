@@ -1,3 +1,6 @@
+// 7:17:49
+
+
 // ************ SELECT ITEMS ************
 let alert = document.querySelector(".alert")
 let grocery = document.querySelector(".list")
@@ -36,10 +39,18 @@ function addItem(e) {
         `
         // append child
         grocery.appendChild(element)
+        // item buttons
+        const deleteBtn = document.querySelector(".delete-btn")
+        const editBtn = document.querySelector(".edit-btn")
+
+        deleteBtn.addEventListener("click", deleteItem)
+        editBtn.addEventListener("click", editItem)
+
         displayAlert("Item Added to the list", "correct")
-        input.value = ""
+        setBackToDefault()
         clearBtn.style.display = "inline"
         grocery.style.display = "block"
+        
     }
     else if(value !== "" && editFlag) {
         
@@ -47,6 +58,10 @@ function addItem(e) {
     else {
         displayAlert("Please Enter Value", "wrong")
     }
+}
+
+function addToLocalStorage(value, id) {
+
 }
 
 function displayAlert(text, action) {
@@ -59,10 +74,33 @@ function displayAlert(text, action) {
     },1000)
 }
 
+function setBackToDefault() {
+    input.value = ""
+    editFlag = false
+    editID = ""
+    submitBtn.innerHTML = "submit"
+}
+
+function deleteItem(e) {
+    const element = e.currentTarget.parentElement.parentElement
+    grocery.removeChild(element)
+    if(grocery.children.length === 0) {
+        clearBtn.style.display = "none"
+    }
+    displayAlert("Item Removed", "wrong")
+    setBackToDefault()
+}
+
+function editItem() {
+}
+
 function clearAll() {
     if(confirm("Clear All Items???")) {
         grocery.innerHTML = ""
         clearBtn.style.display = "none"
+        displayAlert("Empty List", "wrong")
+        setBackToDefault()
+        // localStorage.removeItem("list")
     }
 }
 
