@@ -61,7 +61,7 @@ function addItem(e) {
 }
 
 function addToLocalStorage(value, id) {
-
+    // will add soon
 }
 
 function displayAlert(text, action) {
@@ -92,6 +92,7 @@ function deleteItem(e) {
 }
 
 function editItem() {
+    // will add soon
 }
 
 function clearAll() {
