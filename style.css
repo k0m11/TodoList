@@ -85,6 +85,7 @@ body {
 }
 
 .list {
+    display: block;
     height: auto;
     margin-top: 10px;
     width: 500px;
