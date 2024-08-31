@@ -9,11 +9,10 @@ todoAlert = document.querySelector(".alert")
 todoForm.addEventListener("submit", formHandler)
 
 function formHandler(event) {
-    if (todoInput.value !== "") {
-
     // Чтобы Страница не перезагружалась при нажатии на кнопку
     event.preventDefault()
 
+    if (todoInput.value !== "") {
     // Получаем название задачи из инпута
     const taskText = todoInput.value
 
@@ -29,9 +28,11 @@ function formHandler(event) {
     // Добавляем Элемент на страницу
     todoList.innerHTML += newTask
 
+    // Выбираем все кнопки Редактирования и добавляем Событие
     editBtn = document.querySelectorAll(".edit-btn")
     editBtn.forEach(element => element.addEventListener("click", editItem))
 
+    // Выбираем все кнопки Удаления и добавляем Событие
     deleteBtn = document.querySelectorAll(".delete-btn")
     deleteBtn.forEach(element => element.addEventListener("click", deleteItem))
 
@@ -40,14 +41,41 @@ function formHandler(event) {
 
     // Фокус на поле ввода, если нажали на кнопку
     todoInput.focus()
+
+    // При окончании редактирования, меняем кнопку
+    AddButton.innerHTML = "Submit"
+
+    // Показываем Алёрт
+    showAlert("Задача Добавлена", "green")
+    if (AddButton.innerHTML == "Edit") showAlert("Задача Редактирована", "green")
     }
-    else return;
+    else showAlert("Введите Задачу", "red")
 }
 
+// Удаление Задачи
 function deleteItem() {
-    console.log(this.closest("li").remove())
+    this.closest("li").remove()
+    showAlert("Задача Удалена", "red")
 }
 
+// Редактирование Задачи
 function editItem() {
-
+    todoInput.value = this.closest("li").innerText
+    AddButton.innerHTML = "Edit"
+    this.closest("li").remove()
 }
+
+// Показ Алерта
+function showAlert(text, color) {
+    todoAlert.style.visibility = "visible"
+    todoAlert.className = "alert-" + color
+    todoAlert.innerHTML = text
+
+    // Задержка показа на 1.5 секунды, а потом исчезает
+    setTimeout(function() {
+        todoAlert.style.visibility = "hidden"
+    },1000)
+}
+
+
+    
