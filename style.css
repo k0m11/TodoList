@@ -19,13 +19,14 @@ body {
     box-shadow: 5px 5px 10px 0px rgb(168, 168, 168);
 }
 
-.alert-wrong {
+.alert-red {
     background-color: rgba(167, 13, 13, 0.288);
     width: 80%;
     margin: 0 auto;
     border-radius: 5px;
 }
-.alert-correct {
+
+.alert-green {
     background-color: rgba(13, 167, 34, 0.288);
     width: 80%;
     margin: 0 auto;
